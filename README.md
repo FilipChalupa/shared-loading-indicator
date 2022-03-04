@@ -136,3 +136,72 @@ export const PageNavigationLoadingTracker = ({}) => {
 	return null
 }
 ```
+
+### Loading indicator by progress bar
+
+Place `SharedLoadingIndicator` inside `SharedLoadingIndicatorContextProvider`.
+
+```jsx
+export const SharedLoadingIndicator = () => {
+	const isLoading = useSharedLoading()
+
+	return (
+		<>
+			<style>
+				.wrapper {
+					position: fixed;
+					left: 0;
+					top: 0;
+					right: 0;
+					z-index: 10;
+				}
+
+				.in {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					transform: translateY(-100%);
+					transition-property: visibility, transform;
+					transition-duration: 0.2s;
+					visibility: hidden;
+				}
+
+				.wrapper.is_loading .in {
+					transform: none;
+					visibility: inherit;
+				}
+
+				.loadingBar {
+					position: relative;
+					height: 0.3125em;
+					background-color: #027aff;
+					overflow: hidden;
+				}
+
+				@keyframes loadingBar-wipe {
+					0% {
+						transform: translateX(-100%);
+					}
+					100% {
+						transform: translateX(100%);
+					}
+				}
+
+				.loadingBar::before {
+					content: '';
+					position: absolute;
+					inset: 0;
+					background-color: rgba(255, 255, 255, 0.4);
+					animation: loadingBar-wipe 1s infinite;
+				}
+			</style>
+			<div className={'wrapper' + isLoading ? ' is_loading' : ''}>
+				<div className="in">
+					<div className="loadingBar" />
+				</div>
+			</div>
+		</>
+	)
+}
+```
