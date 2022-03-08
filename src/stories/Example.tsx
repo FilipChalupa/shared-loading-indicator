@@ -4,21 +4,43 @@ import {
 	useLocalLoading,
 	useSharedLoading,
 } from '..'
+import { ProgressLoadingIndicator } from '../ProgressLoadingIndicator'
+import { SharedProgressLoadingIndicator } from '../SharedProgressLoadingIndicator'
 import './global.css'
 
 export interface ExampleProps {}
 
 export const Example: FunctionComponent<ExampleProps> = () => {
+	const [color, setColor] = useState('#027aff')
+
 	return (
 		<SharedLoadingIndicatorContextProvider>
-			<h1>Demo</h1>
-			<SharedStatus />
-			<h2>Basic</h2>
-			<Basic />
-			<h2>Timer</h2>
-			<Timer />
-			<h2>Dynamic</h2>
-			<Dynamic />
+			<div style={{ ['--ProgressLoadingIndicator-color' as any]: color }}>
+				<SharedProgressLoadingIndicator />
+				<h1>Demo</h1>
+				<SharedStatus />
+				<h2>Basic</h2>
+				<Basic />
+				<h2>Timer</h2>
+				<Timer />
+				<h2>Dynamic</h2>
+				<Dynamic />
+				<h2>Custom progress loading indicator color</h2>
+				<pre>
+					<code>
+						--ProgressLoadingIndicator-color: {color};<br />
+						--ProgressLoadingIndicator-other-color: rgba(255, 255, 255, 0.4);
+					</code>
+				</pre>
+				<input
+					type="color"
+					value={color}
+					onChange={(event) => setColor(event.target.value)}
+				/>{' '}
+				<div style={{ display: 'inline-block', width: '6em' }}>
+					<ProgressLoadingIndicator />
+				</div>
+			</div>
 		</SharedLoadingIndicatorContextProvider>
 	)
 }
@@ -26,7 +48,17 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 const SharedStatus: FunctionComponent = () => {
 	const isLoading = useSharedLoading()
 
-	return <div>{isLoading ? 'Something is loading' : 'All idle'}</div>
+	return (
+		<div>
+			{isLoading ? (
+				<>
+					Something is <strong>loading</strong>
+				</>
+			) : (
+				'All idle'
+			)}
+		</div>
+	)
 }
 
 const Basic: FunctionComponent = () => {
@@ -34,7 +66,7 @@ const Basic: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? 'loading…' : 'idle'}
+			State: {isLoading ? <strong>loading…</strong> : 'idle'}
 			<br />
 			<button
 				onClick={() => {
@@ -52,7 +84,7 @@ const Timer: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? 'loading…' : 'idle'}
+			State: {isLoading ? <strong>loading…</strong> : 'idle'}
 			<br />
 			<button
 				disabled={isLoading}
@@ -111,7 +143,13 @@ const DynamicItem: FunctionComponent = () => {
 				setIsLoading(!isLoading)
 			}}
 		>
-			{isLoading ? 'End loading' : 'Start loading'}
+			{isLoading ? (
+				<>
+					End <strong>loading</strong>
+				</>
+			) : (
+				'Start loading'
+			)}
 		</button>
 	)
 }

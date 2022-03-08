@@ -9,6 +9,9 @@ import {
 	useState,
 } from 'react'
 
+export * from './ProgressLoadingIndicator'
+export * from './SharedProgressLoadingIndicator'
+
 const defaultStartDelay = 300
 const defaultMinimalDuration = 1000
 
