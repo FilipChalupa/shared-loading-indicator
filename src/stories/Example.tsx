@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { Fragment, FunctionComponent, useState } from 'react'
 import {
 	SharedLoadingIndicatorContextProvider,
 	useLocalLoading,
 	useSharedLoading,
 } from '..'
+import './global.css'
 
 export interface ExampleProps {}
 
@@ -79,20 +80,22 @@ const Dynamic: FunctionComponent = () => {
 						setCount(count + 1)
 					}}
 				>
-					add
-				</button>
+					➕ add
+				</button>{' '}
 				<button
 					disabled={count <= 0}
 					onClick={() => {
 						setCount(count - 1)
 					}}
 				>
-					remove
+					➖ remove
 				</button>
 			</p>
 			<p>
 				{new Array(count).fill(null).map((_, i) => (
-					<DynamicItem key={i} />
+					<Fragment key={i}>
+						<DynamicItem />{' '}
+					</Fragment>
 				))}
 			</p>
 		</div>
