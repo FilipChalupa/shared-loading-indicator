@@ -9,6 +9,7 @@ import {
 	useState,
 } from 'react'
 
+export * from './Loading'
 export * from './ProgressLoadingIndicator'
 export * from './SharedProgressLoadingIndicator'
 

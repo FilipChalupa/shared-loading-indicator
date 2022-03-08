@@ -1,22 +1,24 @@
-import React, { Fragment, FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import {
+	Loading,
+	ProgressLoadingIndicator,
 	SharedLoadingIndicatorContextProvider,
+	SharedProgressLoadingIndicator,
 	useLocalLoading,
 	useSharedLoading,
 } from '..'
-import { ProgressLoadingIndicator } from '../ProgressLoadingIndicator'
-import { SharedProgressLoadingIndicator } from '../SharedProgressLoadingIndicator'
 import './global.css'
 
 export interface ExampleProps {}
 
 export const Example: FunctionComponent<ExampleProps> = () => {
 	const [color, setColor] = useState('#027aff')
+	const [placement, setPlacement] = useState<'top' | 'bottom'>('top')
 
 	return (
 		<SharedLoadingIndicatorContextProvider>
 			<div style={{ ['--ProgressLoadingIndicator-color' as any]: color }}>
-				<SharedProgressLoadingIndicator />
+				<SharedProgressLoadingIndicator placement={placement} />
 				<h1>Demo</h1>
 				<SharedStatus />
 				<h2>Basic</h2>
@@ -40,6 +42,16 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 				<div style={{ display: 'inline-block', width: '6em' }}>
 					<ProgressLoadingIndicator />
 				</div>
+				<h2>Placement</h2>
+				<select
+					value={placement}
+					onChange={(event) => {
+						setPlacement(event.target.value as typeof placement)
+					}}
+				>
+					<option value="top">Top</option>
+					<option value="bottom">Bottom</option>
+				</select>
 			</div>
 		</SharedLoadingIndicatorContextProvider>
 	)
@@ -55,7 +67,9 @@ const SharedStatus: FunctionComponent = () => {
 					Something is <strong>loading</strong>
 				</>
 			) : (
-				'All idle'
+				<>
+					All <i>idle</i>
+				</>
 			)}
 		</div>
 	)
@@ -66,7 +80,7 @@ const Basic: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? <strong>loading…</strong> : 'idle'}
+			State: {isLoading ? <strong>loading…</strong> : <i>idle</i>}
 			<br />
 			<button
 				onClick={() => {
@@ -84,7 +98,7 @@ const Timer: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? <strong>loading…</strong> : 'idle'}
+			State: {isLoading ? <strong>loading…</strong> : <i>idle</i>}
 			<br />
 			<button
 				disabled={isLoading}
@@ -102,7 +116,7 @@ const Timer: FunctionComponent = () => {
 }
 
 const Dynamic: FunctionComponent = () => {
-	const [count, setCount] = useState(2)
+	const [count, setCount] = useState(0)
 
 	return (
 		<div>
@@ -125,31 +139,12 @@ const Dynamic: FunctionComponent = () => {
 			</p>
 			<p>
 				{new Array(count).fill(null).map((_, i) => (
-					<Fragment key={i}>
-						<DynamicItem />{' '}
-					</Fragment>
+					<span key={i}>
+						<strong>🦃 loading</strong>
+						<Loading />{' '}
+					</span>
 				))}
 			</p>
 		</div>
-	)
-}
-
-const DynamicItem: FunctionComponent = () => {
-	const [isLoading, setIsLoading] = useLocalLoading()
-
-	return (
-		<button
-			onClick={() => {
-				setIsLoading(!isLoading)
-			}}
-		>
-			{isLoading ? (
-				<>
-					End <strong>loading</strong>
-				</>
-			) : (
-				'Start loading'
-			)}
-		</button>
 	)
 }

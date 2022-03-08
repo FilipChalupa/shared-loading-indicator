@@ -3,7 +3,9 @@ import { FunctionComponent } from 'react'
 import { useSharedLoading } from '.'
 import { ProgressLoadingIndicator } from './ProgressLoadingIndicator'
 
-export const SharedProgressLoadingIndicator: FunctionComponent = () => {
+export const SharedProgressLoadingIndicator: FunctionComponent<{
+	placement?: 'top' | 'bottom'
+}> = ({ placement = 'top' }) => {
 	const isLoading = useSharedLoading()
 
 	return (
@@ -28,6 +30,14 @@ export const SharedProgressLoadingIndicator: FunctionComponent = () => {
 							transition-duration: 0.2s;
 							visibility: hidden;
 						}
+						.SharedProgressLoadingIndicator--placement-bottom,
+						.SharedProgressLoadingIndicator--placement-bottom .SharedProgressLoadingIndicator__in {
+							top: auto;
+							bottom: 0;
+						}
+						.SharedProgressLoadingIndicator--placement-bottom .SharedProgressLoadingIndicator__in {
+							transform: translateY(100%);
+						}
 						.SharedProgressLoadingIndicator--loading .SharedProgressLoadingIndicator__in {
 							transform: none;
 							visibility: inherit;
@@ -41,7 +51,7 @@ export const SharedProgressLoadingIndicator: FunctionComponent = () => {
 				}}
 			/>
 			<div
-				className={`SharedProgressLoadingIndicator${
+				className={`SharedProgressLoadingIndicator SharedProgressLoadingIndicator--placement-${placement} ${
 					isLoading ? ' SharedProgressLoadingIndicator--loading' : ''
 				}`}
 			>

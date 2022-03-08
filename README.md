@@ -30,11 +30,26 @@ export const App => () => {
 
 ### Options
 
-You can optionally configure `startDelay` and `minimalDuration` in milliseconds which will be taken into account in `useSharedLoading` later.
+You can optionally configure `startDelay` and `minimalDuration` in milliseconds which will be taken into account in `<SharedProgressLoadingIndicator/>` and `useSharedLoading`.
 
-### Hooks
+### Component `<SharedProgressLoadingIndicator/>`
 
-#### useSharedLoading
+Place `SharedProgressLoadingIndicator` inside `SharedLoadingIndicatorContextProvider` to use prestyled loading indicator. See [demo](https://shared-loading-indicator.netlify.app) to change color or placement.
+
+```jsx
+import { SharedLoadingIndicatorContextProvider, SharedProgressLoadingIndicator } from 'shared-loading-indicator'
+
+export const App => () => {
+	return (
+		<SharedLoadingIndicatorContextProvider>
+			<SharedProgressLoadingIndicator/>
+			My app
+		</SharedLoadingIndicatorContextProvider>
+	)
+}
+```
+
+### Hook `useSharedLoading`
 
 Hook `useSharedLoading` returns `true` if some component is in loading state. Use this information to show your own loading indicator (spinner, progress bar, …).
 
@@ -56,7 +71,26 @@ export const LoadingIndicator => () => {
 }
 ```
 
-#### useLocalLoading
+### Component `<Loading/>`
+
+Place `Loading` inside `SharedLoadingIndicatorContextProvider`. To signalize something is loading.
+
+```jsx
+import { SharedLoadingIndicatorContextProvider, SharedProgressLoadingIndicator } from 'shared-loading-indicator'
+
+export const App => () => {
+	const somethingIsLoading = true
+
+	return (
+		<SharedLoadingIndicatorContextProvider>
+			{somethingIsLoading && <Loading/>}
+			My app
+		</SharedLoadingIndicatorContextProvider>
+	)
+}
+```
+
+### Hook `useLocalLoading`
 
 Hook `useLocalLoading` works similarly to `useState`. It returns array with `boolean` state indicating that component is loading and set function.
 
@@ -108,23 +142,6 @@ export const LazyComponent => () => {
 ```
 
 ## Tips
-
-### Loading indicator by progress bar
-
-Place `SharedProgressLoadingIndicator` inside `SharedLoadingIndicatorContextProvider`.
-
-```jsx
-import { SharedLoadingIndicatorContextProvider, SharedProgressLoadingIndicator } from 'shared-loading-indicator'
-
-export const App => () => {
-	return (
-		<SharedLoadingIndicatorContextProvider>
-			<SharedProgressLoadingIndicator/>
-			My app
-		</SharedLoadingIndicatorContextProvider>
-	)
-}
-```
 
 ### Page navigation in [Next.js](https://nextjs.org/)
 
