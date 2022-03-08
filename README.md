@@ -73,7 +73,7 @@ export const LoadingIndicator => () => {
 
 ### Component `<Loading/>`
 
-Place `Loading` inside `SharedLoadingIndicatorContextProvider`. To signalize something is loading.
+Place `Loading` inside `SharedLoadingIndicatorContextProvider` to signalize something is loading.
 
 ```jsx
 import { SharedLoadingIndicatorContextProvider, SharedProgressLoadingIndicator } from 'shared-loading-indicator'
