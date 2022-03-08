@@ -211,3 +211,9 @@ export const SharedLoadingIndicator = () => {
 	)
 }
 ```
+
+## Development
+
+- Install dependencies: `npm ci`
+- Build the package: `npm start`
+- Run Storybook to check it works: `npm run storybook`
