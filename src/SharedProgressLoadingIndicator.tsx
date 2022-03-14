@@ -51,7 +51,7 @@ export const SharedProgressLoadingIndicator: FunctionComponent<{
 				}}
 			/>
 			<div
-				className={`SharedProgressLoadingIndicator SharedProgressLoadingIndicator--placement-${placement} ${
+				className={`SharedProgressLoadingIndicator SharedProgressLoadingIndicator--placement-${placement}${
 					isLoading ? ' SharedProgressLoadingIndicator--loading' : ''
 				}`}
 			>
