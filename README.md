@@ -76,7 +76,7 @@ export const LoadingIndicator => () => {
 Place `Loading` inside `SharedLoadingIndicatorContextProvider` to signalize something is loading.
 
 ```jsx
-import { SharedLoadingIndicatorContextProvider, SharedProgressLoadingIndicator } from 'shared-loading-indicator'
+import { SharedLoadingIndicatorContextProvider, Loading } from 'shared-loading-indicator'
 
 export const App => () => {
 	const somethingIsLoading = true
