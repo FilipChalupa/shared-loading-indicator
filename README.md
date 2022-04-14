@@ -152,7 +152,7 @@ import { useLocalLoading } from 'shared-loading-indicator'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-export const PageNavigationLoadingTracker = ({}) => {
+export const PageNavigationLoadingTracker = () => {
 	const router = useRouter()
 	const [_, setIsLoading] = useLocalLoading()
 
