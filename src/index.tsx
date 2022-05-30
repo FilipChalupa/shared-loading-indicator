@@ -27,6 +27,7 @@ const Context = createContext({
 export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
 	startDelay?: number
 	minimalDuration?: number
+	children?: React.ReactNode
 }> = ({
 	children,
 	startDelay = defaultStartDelay,
