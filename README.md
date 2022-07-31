@@ -141,6 +141,22 @@ export const LazyComponent => () => {
 }
 ```
 
+### Hook `useMirrorLoading`
+
+Mirrors first argument to `useLocalMirror` under the hood.
+
+```jsx
+import { useMirrorLoading } from 'shared-loading-indicator'
+import { useQuery } from '@tanstack/react-query'
+
+const Mirror: FunctionComponent = () => {
+	const query = useQuery([], getData)
+	useMirrorLoading(query.isLoading)
+
+	return <div>{query.data}</div>
+}
+```
+
 ## Tips
 
 ### Page navigation in [Next.js](https://nextjs.org/)

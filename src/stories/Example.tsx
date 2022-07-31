@@ -1,13 +1,14 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react';
 import {
 	Loading,
 	ProgressLoadingIndicator,
 	SharedLoadingIndicatorContextProvider,
 	SharedProgressLoadingIndicator,
 	useLocalLoading,
-	useSharedLoading,
-} from '..'
-import './global.css'
+	useSharedLoading
+} from '..';
+import { useMirrorLoading } from '../index';
+import './global.css';
 
 export interface ExampleProps {}
 
@@ -27,6 +28,8 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 				<Timer />
 				<h2>Dynamic</h2>
 				<Dynamic />
+				<h2>Mirror</h2>
+				<Mirror/>
 				<h2>Custom progress loading indicator color</h2>
 				<pre>
 					<code>
@@ -145,6 +148,25 @@ const Dynamic: FunctionComponent = () => {
 					</span>
 				))}
 			</p>
+		</div>
+	)
+}
+
+const Mirror: FunctionComponent = () => {
+	const [isLoading, setIsLoading] = useState(false)
+	useMirrorLoading(isLoading)
+
+	return (
+		<div>
+			State: {isLoading ? <strong>loading…</strong> : <i>idle</i>}
+			<br />
+			<button
+				onClick={() => {
+					setIsLoading(!isLoading)
+				}}
+			>
+				Toggle state
+			</button>
 		</div>
 	)
 }

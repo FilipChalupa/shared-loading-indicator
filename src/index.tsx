@@ -6,7 +6,7 @@ import {
 	useContext,
 	useEffect,
 	useRef,
-	useState,
+	useState
 } from 'react'
 
 export * from './Loading'
@@ -78,6 +78,14 @@ export const useLocalLoading = (): [boolean, (isLoading: boolean) => void] => {
 	}, [decrement])
 
 	return [isLoading, setIsLoading]
+}
+
+export const useMirrorLoading = (isLoading: boolean) => {
+	const [_, setIsLoading] = useLocalLoading()
+
+	useEffect(() => {
+		setIsLoading(isLoading)
+	}, [setIsLoading, isLoading])
 }
 
 export const useSharedLoading = () => {
