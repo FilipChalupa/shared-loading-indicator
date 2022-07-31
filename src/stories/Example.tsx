@@ -65,13 +65,13 @@ const SharedStatus: FunctionComponent = () => {
 
 	return (
 		<div>
-			{isLoading ? (
+			Global/merged state: {isLoading ? (
 				<>
-					Something is <strong>loading</strong>
+					something is <strong>loading</strong>
 				</>
 			) : (
 				<>
-					All <i>idle</i>
+					<i>idle</i> - <strong>nothing</strong> is loading right now
 				</>
 			)}
 		</div>
@@ -83,7 +83,7 @@ const Basic: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? <strong>loading…</strong> : <i>idle</i>}
+			State: {isLoading ? <strong>is loading…</strong> : <i>idle</i>}
 			<br />
 			<button
 				onClick={() => {
@@ -101,7 +101,7 @@ const Timer: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? <strong>loading…</strong> : <i>idle</i>}
+			State: {isLoading ? <strong>is loading…</strong> : <i>idle</i>}
 			<br />
 			<button
 				disabled={isLoading}
@@ -158,7 +158,7 @@ const Mirror: FunctionComponent = () => {
 
 	return (
 		<div>
-			State: {isLoading ? <strong>loading…</strong> : <i>idle</i>}
+			State: {isLoading ? <strong>is loading…</strong> : <i>idle</i>}
 			<br />
 			<button
 				onClick={() => {
