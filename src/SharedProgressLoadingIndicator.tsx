@@ -5,8 +5,10 @@ import { ProgressLoadingIndicator } from './ProgressLoadingIndicator'
 
 export const SharedProgressLoadingIndicator: FunctionComponent<{
 	placement?: 'top' | 'bottom'
-}> = ({ placement = 'top' }) => {
-	const isLoading = useSharedLoading()
+	startDelay?: number
+	minimalDuration?: number
+}> = ({ placement = 'top', startDelay, minimalDuration }) => {
+	const isLoading = useSharedLoading({ startDelay, minimalDuration })
 
 	return (
 		<>

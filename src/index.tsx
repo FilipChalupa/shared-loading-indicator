@@ -6,7 +6,7 @@ import {
 	useContext,
 	useEffect,
 	useRef,
-	useState
+	useState,
 } from 'react'
 
 export * from './Loading'
@@ -20,19 +20,11 @@ const Context = createContext({
 	count: 0,
 	increment: () => {},
 	decrement: () => {},
-	startDelay: defaultStartDelay,
-	minimalDuration: defaultMinimalDuration,
 })
 
 export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
-	startDelay?: number
-	minimalDuration?: number
 	children?: React.ReactNode
-}> = ({
-	children,
-	startDelay = defaultStartDelay,
-	minimalDuration = defaultMinimalDuration,
-}) => {
+}> = ({ children }) => {
 	const [count, setCount] = useState(0)
 	const increment = useCallback(() => {
 		setCount((count) => count + 1)
@@ -42,9 +34,7 @@ export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
 	}, [])
 
 	return (
-		<Context.Provider
-			value={{ count, increment, decrement, startDelay, minimalDuration }}
-		>
+		<Context.Provider value={{ count, increment, decrement }}>
 			{children}
 		</Context.Provider>
 	)
@@ -88,8 +78,17 @@ export const useMirrorLoading = (isLoading: boolean) => {
 	}, [setIsLoading, isLoading])
 }
 
-export const useSharedLoading = () => {
-	const { count, startDelay, minimalDuration } = useContext(Context)
+export const useSharedLoading = (
+	options: {
+		startDelay?: number
+		minimalDuration?: number
+	} = {}
+) => {
+	const {
+		startDelay = defaultStartDelay,
+		minimalDuration = defaultMinimalDuration,
+	} = options
+	const { count } = useContext(Context)
 	const isLoading = count > 0
 	const [isThrottledLoading, setIsThrottledLoading] = useState(isLoading)
 	const loadingStart = useRef(new Date())

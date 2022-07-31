@@ -28,10 +28,6 @@ export const App => () => {
 }
 ```
 
-### Options
-
-You can optionally configure `startDelay` and `minimalDuration` in milliseconds which will be taken into account in `<SharedProgressLoadingIndicator/>` and `useSharedLoading`.
-
 ### Component `<SharedProgressLoadingIndicator/>`
 
 Place `SharedProgressLoadingIndicator` inside `SharedLoadingIndicatorContextProvider` to use prestyled loading indicator. See [demo](https://shared-loading-indicator.netlify.app) to change color or placement.
@@ -69,6 +65,17 @@ export const LoadingIndicator => () => {
 		</div>
 	)
 }
+```
+
+#### Options
+
+You can optionally configure `startDelay` and `minimalDuration` in milliseconds.
+
+```js
+const isLoading = useSharedLoading({
+	startDelay: 300, // isLoading won't be true if all local loads get finished under 300 milliseconds
+	minimalDuration: 1000, // isLoading will be true for at least 1000 milliseconds
+})
 ```
 
 ### Component `<Loading/>`

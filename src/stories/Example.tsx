@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react'
 import {
 	Loading,
 	ProgressLoadingIndicator,
 	SharedLoadingIndicatorContextProvider,
 	SharedProgressLoadingIndicator,
 	useLocalLoading,
-	useSharedLoading
-} from '..';
-import { useMirrorLoading } from '../index';
-import './global.css';
+	useSharedLoading,
+} from '..'
+import { useMirrorLoading } from '../index'
+import './global.css'
 
 export interface ExampleProps {}
 
@@ -29,7 +29,7 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 				<h2>Dynamic</h2>
 				<Dynamic />
 				<h2>Mirror</h2>
-				<Mirror/>
+				<Mirror />
 				<h2>Custom progress loading indicator color</h2>
 				<pre>
 					<code>
@@ -65,7 +65,8 @@ const SharedStatus: FunctionComponent = () => {
 
 	return (
 		<div>
-			Global/merged state: {isLoading ? (
+			Global/merged state:{' '}
+			{isLoading ? (
 				<>
 					something is <strong>loading</strong>
 				</>
