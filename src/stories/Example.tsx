@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, StrictMode, useState } from 'react'
 import {
 	Loading,
 	ProgressLoadingIndicator,
@@ -17,46 +17,48 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 	const [placement, setPlacement] = useState<'top' | 'bottom'>('top')
 
 	return (
-		<SharedLoadingIndicatorContextProvider>
-			<div style={{ ['--ProgressLoadingIndicator-color' as any]: color }}>
-				<SharedProgressLoadingIndicator placement={placement} />
-				<h1>Demo</h1>
-				<SharedStatus />
-				<h2>Basic</h2>
-				<Basic />
-				<h2>Timer</h2>
-				<Timer />
-				<h2>Dynamic</h2>
-				<Dynamic />
-				<h2>Mirror</h2>
-				<Mirror />
-				<h2>Custom progress loading indicator color</h2>
-				<pre>
-					<code>
-						--ProgressLoadingIndicator-color: {color};<br />
-						--ProgressLoadingIndicator-other-color: rgba(255, 255, 255, 0.4);
-					</code>
-				</pre>
-				<input
-					type="color"
-					value={color}
-					onChange={(event) => setColor(event.target.value)}
-				/>{' '}
-				<div style={{ display: 'inline-block', width: '6em' }}>
-					<ProgressLoadingIndicator />
+		<StrictMode>
+			<SharedLoadingIndicatorContextProvider>
+				<div style={{ ['--ProgressLoadingIndicator-color' as any]: color }}>
+					<SharedProgressLoadingIndicator placement={placement} />
+					<h1>Demo</h1>
+					<SharedStatus />
+					<h2>Basic</h2>
+					<Basic />
+					<h2>Timer</h2>
+					<Timer />
+					<h2>Dynamic</h2>
+					<Dynamic />
+					<h2>Mirror</h2>
+					<Mirror />
+					<h2>Custom progress loading indicator color</h2>
+					<pre>
+						<code>
+							--ProgressLoadingIndicator-color: {color};<br />
+							--ProgressLoadingIndicator-other-color: rgba(255, 255, 255, 0.4);
+						</code>
+					</pre>
+					<input
+						type="color"
+						value={color}
+						onChange={(event) => setColor(event.target.value)}
+					/>{' '}
+					<div style={{ display: 'inline-block', width: '6em' }}>
+						<ProgressLoadingIndicator />
+					</div>
+					<h2>Placement</h2>
+					<select
+						value={placement}
+						onChange={(event) => {
+							setPlacement(event.target.value as typeof placement)
+						}}
+					>
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+					</select>
 				</div>
-				<h2>Placement</h2>
-				<select
-					value={placement}
-					onChange={(event) => {
-						setPlacement(event.target.value as typeof placement)
-					}}
-				>
-					<option value="top">Top</option>
-					<option value="bottom">Bottom</option>
-				</select>
-			</div>
-		</SharedLoadingIndicatorContextProvider>
+			</SharedLoadingIndicatorContextProvider>
+		</StrictMode>
 	)
 }
 
