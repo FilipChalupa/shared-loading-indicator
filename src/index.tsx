@@ -18,8 +18,14 @@ const defaultMinimalDuration = 1000
 
 const Context = createContext({
 	count: 0,
-	increment: () => {},
-	decrement: () => {},
+	increment: () => {
+		throw new Error('<SharedLoadingIndicatorContextProvider> is missing.')
+		return
+	},
+	decrement: () => {
+		throw new Error('<SharedLoadingIndicatorContextProvider> is missing.')
+		return
+	},
 })
 
 export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
