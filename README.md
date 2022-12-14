@@ -45,6 +45,18 @@ export const App => () => {
 }
 ```
 
+You can change the `<SharedProgressLoadingIndicator>` color by setting a CSS custom property on its parent named `--ProgressLoadingIndicator-color`. Or you can build your own indicator using `useSharedLoading` hook.
+
+#### CSS example
+
+```css
+:root {
+	--ProgressLoadingIndicator-color: #ff00ff;
+}
+```
+
+![magenta indicator](https://raw.githubusercontent.com/FilipChalupa/shared-loading-indicator/HEAD/magenta-indicator.gif)
+
 ### Hook `useSharedLoading`
 
 Hook `useSharedLoading` returns `true` if some component is in loading state. Use this information to show your own loading indicator (spinner, progress bar, …).
