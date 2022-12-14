@@ -49,29 +49,17 @@ export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
 export const useLocalLoading = (): [boolean, (isLoading: boolean) => void] => {
 	const [isLoading, setIsLoading] = useState(false)
 	const { increment, decrement } = useContext(Context)
-	const [isFirstPass, setIsFirstPass] = useState(true)
-	const isLoadingRef = useRef(false)
 
 	useEffect(() => {
-		if (isFirstPass) {
-			setIsFirstPass(false)
-		} else {
-			isLoadingRef.current = isLoading
-			if (isLoading) {
-				increment()
-			} else {
-				decrement()
-			}
+		if (isLoading) {
+			increment()
 		}
-	}, [decrement, increment, isLoading /* isFirstPass intentionally omitted */])
-
-	useEffect(() => {
 		return () => {
-			if (isLoadingRef.current) {
+			if (isLoading) {
 				decrement()
 			}
 		}
-	}, [decrement])
+	}, [isLoading])
 
 	return [isLoading, setIsLoading]
 }
