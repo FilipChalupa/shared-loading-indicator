@@ -1,14 +1,9 @@
-import { FunctionComponent, useEffect } from 'react'
-import { useLocalLoading } from './base'
+import type { FunctionComponent } from 'react'
+import { useMirrorLoading } from './base'
 
 export const Loading: FunctionComponent<{
 	isLoading?: boolean
 }> = ({ isLoading = true }) => {
-	const [_, setIsLoading] = useLocalLoading()
-
-	useEffect(() => {
-		setIsLoading(isLoading)
-	}, [isLoading, setIsLoading])
-
+	useMirrorLoading(isLoading)
 	return null
 }
