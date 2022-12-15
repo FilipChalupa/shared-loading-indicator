@@ -1,6 +1,6 @@
 {
 	"name": "shared-loading-indicator",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Simplifies loading state sharing.",
 	"main": "./dist/index.js",
 	"module": "./dist/index.es.js",
