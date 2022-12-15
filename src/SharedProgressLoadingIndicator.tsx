@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { FunctionComponent } from 'react'
-import { useSharedLoading } from '.'
+import { useSharedLoading } from './base'
 import { ProgressLoadingIndicator } from './ProgressLoadingIndicator'
 
 export const SharedProgressLoadingIndicator: FunctionComponent<{

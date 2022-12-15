@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect } from 'react'
-import { useLocalLoading } from '.'
+import { useLocalLoading } from './base'
 
 export const Loading: FunctionComponent<{
 	isLoading?: boolean
