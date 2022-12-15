@@ -1,13 +1,13 @@
 import React, { FunctionComponent, StrictMode, useState } from 'react'
 import {
-	Loading,
-	ProgressLoadingIndicator,
 	SharedLoadingIndicatorContextProvider,
-	SharedProgressLoadingIndicator,
 	useLocalLoading,
 	useSharedLoading,
-} from '..'
+} from '../base'
 import { useMirrorLoading } from '../index'
+import { Loading } from '../Loading'
+import { ProgressLoadingIndicator } from '../ProgressLoadingIndicator'
+import { SharedProgressLoadingIndicator } from '../SharedProgressLoadingIndicator'
 import './global.css'
 
 export interface ExampleProps {}
