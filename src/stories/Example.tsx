@@ -2,9 +2,9 @@ import React, { FunctionComponent, StrictMode, useState } from 'react'
 import {
 	SharedLoadingIndicatorContextProvider,
 	useLocalLoading,
+	useMirrorLoading,
 	useSharedLoading,
 } from '../base'
-import { useMirrorLoading } from '../index'
 import { Loading } from '../Loading'
 import { ProgressLoadingIndicator } from '../ProgressLoadingIndicator'
 import { SharedProgressLoadingIndicator } from '../SharedProgressLoadingIndicator'
