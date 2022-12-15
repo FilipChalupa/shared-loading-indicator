@@ -63,11 +63,14 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 }
 
 const SharedStatus: FunctionComponent = () => {
-	const isLoading = useSharedLoading()
+	const isLoading = useSharedLoading({
+		minimalDuration: 0,
+		startDelay: 0,
+	})
 
 	return (
 		<div>
-			Global/merged state:{' '}
+			Immediate global/merged state:{' '}
 			{isLoading ? (
 				<>
 					something is <strong>loading</strong>
