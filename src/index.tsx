@@ -13,6 +13,7 @@ export * from './base'
 export * from './Loading'
 export * from './ProgressLoadingIndicator'
 export * from './SharedProgressLoadingIndicator'
+export * from './useMirrorLoading'
 
 const defaultStartDelay = 300
 const defaultMinimalDuration = 1000

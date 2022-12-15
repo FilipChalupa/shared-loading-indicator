@@ -1,5 +1,5 @@
 import type { FunctionComponent } from 'react'
-import { useMirrorLoading } from './base'
+import { useMirrorLoading } from './useMirrorLoading'
 
 export const Loading: FunctionComponent<{
 	isLoading?: boolean
