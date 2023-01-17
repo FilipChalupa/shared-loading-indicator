@@ -1,10 +1,13 @@
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
-import path from 'path'
-import del from 'rollup-plugin-delete'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import typescript from 'rollup-plugin-typescript2'
-import packageJson from './package.json'
+//import packageJson from './package.json'
+import fs from 'fs'
+import path from 'path'
+import del from 'rollup-plugin-delete'
+
+const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf-8'))
 
 export default {
 	input: './src/index.tsx',
