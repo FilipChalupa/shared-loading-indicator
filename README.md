@@ -183,10 +183,8 @@ const Mirror: FunctionComponent = () => {
 Place `NextPageNavigationLoadingTracker` inside `SharedLoadingIndicatorContextProvider`. It will track page navigation and trigger global loading state until page another is loaded.
 
 ```jsx
-import {
-	NextPageNavigationLoadingTracker,
-	SharedLoadingIndicatorContextProvider,
-} from 'shared-loading-indicator'
+import { SharedLoadingIndicatorContextProvider } from 'shared-loading-indicator'
+import { NextPageNavigationLoadingTracker } from 'shared-loading-indicator/dist/NextPageNavigationLoadingTracker'
 
 export const MyApp = () => {
 	return (

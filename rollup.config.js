@@ -23,7 +23,7 @@ export default {
 			sourcemap: true,
 		},
 	],
-	external: ['react'],
+	external: ['react', 'next/router'],
 	plugins: [
 		del({ targets: path.parse(packageJson.main).dir + '/*' }),
 		peerDepsExternal(),
