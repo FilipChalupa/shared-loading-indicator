@@ -145,6 +145,9 @@ export const LazyComponent => () => {
 			.then(receivedData => {
 				setData(receivedData)
 			})
+			.finally(() => {
+				setIsLoading(false)
+			})
 	}, [])
 
 	return (
