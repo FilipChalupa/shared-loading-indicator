@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
 	plugins: [react()],
+	base: '/shared-loading-indicator/',
 	build: {
 		outDir: './demo-dist',
 	},

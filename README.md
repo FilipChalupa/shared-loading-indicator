@@ -4,7 +4,7 @@ Simplifies loading state sharing in React.
 
 ![Demo](https://raw.githubusercontent.com/FilipChalupa/shared-loading-indicator/HEAD/screencast.gif)
 
-You can play with it yourself here [shared-loading-indicator.netlify.app](https://shared-loading-indicator.netlify.app).
+You can play with it yourself here [filipchalupa.cz/shared-loading-indicator](https://filipchalupa.cz/shared-loading-indicator/).
 
 ## Installation
 
