@@ -216,5 +216,4 @@ export const PageNavigationLoadingTracker = () => {
 ## Development
 
 - Install dependencies: `npm ci`
-- Build the package: `npm run dev`
-- Run Storybook to check it works: `npm run storybook`
+- Run: `npm run dev`

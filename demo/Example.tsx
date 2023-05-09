@@ -1,13 +1,13 @@
 import React, { FunctionComponent, StrictMode, useState } from 'react'
+import { Loading } from '../src/Loading'
+import { ProgressLoadingIndicator } from '../src/ProgressLoadingIndicator'
+import { SharedProgressLoadingIndicator } from '../src/SharedProgressLoadingIndicator'
 import {
 	SharedLoadingIndicatorContextProvider,
 	useLocalLoading,
 	useSharedLoading,
-} from '../base'
-import { Loading } from '../Loading'
-import { ProgressLoadingIndicator } from '../ProgressLoadingIndicator'
-import { SharedProgressLoadingIndicator } from '../SharedProgressLoadingIndicator'
-import { useMirrorLoading } from '../useMirrorLoading'
+} from '../src/base'
+import { useMirrorLoading } from '../src/useMirrorLoading'
 import './global.css'
 
 export interface ExampleProps {}
@@ -21,7 +21,7 @@ export const Example: FunctionComponent<ExampleProps> = () => {
 			<SharedLoadingIndicatorContextProvider>
 				<div style={{ ['--ProgressLoadingIndicator-color' as any]: color }}>
 					<SharedProgressLoadingIndicator placement={placement} />
-					<h1>Demo</h1>
+					<h1>Shared loading indicator demo</h1>
 					<SharedStatus />
 					<h2>Basic</h2>
 					<Basic />
