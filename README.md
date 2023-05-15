@@ -14,7 +14,7 @@ npm install shared-loading-indicator
 
 ## How to use
 
-Wrap all by one `SharedLoadingIndicatorContextProvider`.
+Wrap all by one `<SharedLoadingIndicatorContextProvider>`.
 
 ```jsx
 import { SharedLoadingIndicatorContextProvider } from 'shared-loading-indicator'
@@ -57,7 +57,7 @@ You can change the `<SharedProgressLoadingIndicator>` color by setting a CSS cus
 
 ![magenta indicator](https://raw.githubusercontent.com/FilipChalupa/shared-loading-indicator/HEAD/magenta-indicator.gif)
 
-### Hook `useSharedLoading`
+### Hook `useSharedLoading()`
 
 Hook `useSharedLoading` returns `true` if some component is in loading state. Use this information to show your own loading indicator (spinner, progress bar, …).
 
@@ -92,7 +92,7 @@ const isLoading = useSharedLoading({
 
 ### Component `<Loading/>`
 
-Place `Loading` inside `SharedLoadingIndicatorContextProvider` to signalize something is loading.
+Place `<Loading>` inside `<SharedLoadingIndicatorContextProvider>` to signalize something is loading.
 
 ```jsx
 import { SharedLoadingIndicatorContextProvider, Loading } from 'shared-loading-indicator'
@@ -109,7 +109,7 @@ export const App => () => {
 }
 ```
 
-### Hook `useLocalLoading`
+### Hook `useLocalLoading()`
 
 Hook `useLocalLoading` works similarly to `useState`. It returns array with `boolean` state indicating that component is loading and set function.
 
@@ -163,7 +163,7 @@ export const LazyComponent => () => {
 }
 ```
 
-### Hook `useMirrorLoading`
+### Hook `useMirrorLoading()`
 
 Mirrors first argument to `useLocalMirror` under the hood.
 
@@ -181,37 +181,7 @@ const Mirror: FunctionComponent = () => {
 
 ## Tips
 
-### Page navigation in [Next.js](https://nextjs.org/)
-
-Place `PageNavigationLoadingTracker` inside `SharedLoadingIndicatorContextProvider`. It will track page navigation and trigger global loading state until page another is loaded.
-
-```jsx
-import { useLocalLoading } from 'shared-loading-indicator'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-
-export const PageNavigationLoadingTracker = () => {
-	const router = useRouter()
-	const [_, setIsLoading] = useLocalLoading()
-
-	useEffect(() => {
-		const handleStart = (url: string) => {
-			url !== router.pathname ? setIsLoading(true) : setIsLoading(false)
-		}
-		const handleComplete = () => setIsLoading(false)
-		router.events.on('routeChangeStart', handleStart)
-		router.events.on('routeChangeComplete', handleComplete)
-		router.events.on('routeChangeError', handleComplete)
-		return () => {
-			router.events.off('routeChangeStart', handleStart)
-			router.events.off('routeChangeComplete', handleComplete)
-			router.events.off('routeChangeError', handleComplete)
-		}
-	}, [router, setIsLoading])
-
-	return null
-}
-```
+- [Page navigation in Next.js](tips/nextjs.md)
 
 ## Development
 
