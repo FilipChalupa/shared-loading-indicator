@@ -182,6 +182,7 @@ const Mirror: FunctionComponent = () => {
 ## Tips
 
 - [Page navigation in Next.js](tips/nextjs.md)
+- [Custom indicator with Material UI](tips/materialui.md)
 
 ## Development
 
