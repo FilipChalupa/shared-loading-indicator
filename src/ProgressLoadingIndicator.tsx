@@ -17,14 +17,14 @@ export const ProgressLoadingIndicator: FunctionComponent = () => {
 							position: absolute;
 							inset: 0;
 							background-color: var(--ProgressLoadingIndicator-other-color, rgba(255, 255, 255, 0.4));
-							animation: ProgressLoadingIndicator-wipe 1s infinite;
+							animation: ProgressLoadingIndicator-wipe 1s infinite ease-in-out;
 						}
 						@keyframes ProgressLoadingIndicator-wipe {
 							0% {
 								transform: translateX(-100%);
 							}
 							100% {
-								transform: translateX(100%);
+								transform: translateX(100%) scaleX(0.3);
 							}
 						}
 						@media (prefers-reduced-motion) {
