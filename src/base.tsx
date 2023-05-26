@@ -24,6 +24,23 @@ const Context = createContext({
 	},
 })
 
+/**
+ * Context provider to wrap your whole app in.
+ *
+ * ### Example
+ *
+ * ```jsx
+ * import { SharedLoadingIndicatorContextProvider } from 'shared-loading-indicator'
+ *
+ * export const App => () => {
+ * 	return (
+ * 		<SharedLoadingIndicatorContextProvider>
+ * 			My app
+ * 		</SharedLoadingIndicatorContextProvider>
+ * 	)
+ * }
+ * ```
+ */
 export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
 	children?: React.ReactNode
 }> = ({ children }) => {
@@ -42,6 +59,30 @@ export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
 	)
 }
 
+/**
+ * Hook `useLocalLoading` works similarly to `useState`. It returns array with `boolean` state indicating that component is loading and set function.
+ *
+ * ### Example
+ *
+ * ```jsx
+ * import { useLocalLoading } from 'shared-loading-indicator'
+ *
+ * export const MyComponent => () => {
+ * 	const [isLoading, setIsLoading] = useLocalLoading()
+ *
+ * 	return (
+ * 		<div>
+ * 			<div>
+ * 				Is loading: {isLoading ? 'yes' : 'no'}
+ * 			</div>
+ * 			<button onClick={() => {
+ * 				setIsLoading(!isLoading)
+ * 			}}>
+ * 		</div>
+ * 	)
+ * }
+ * ```
+ */
 export const useLocalLoading = (): [boolean, (isLoading: boolean) => void] => {
 	const [isLoading, setIsLoading] = useState(false)
 	const { increment, decrement } = useContext(Context)
@@ -60,6 +101,29 @@ export const useLocalLoading = (): [boolean, (isLoading: boolean) => void] => {
 	return [isLoading, setIsLoading]
 }
 
+/**
+ * Hook `useSharedLoading` returns `true` if some component is in loading state. Use this information to show your own loading indicator (spinner, progress bar, …).
+ *
+ * ### Example
+ *
+ * ```jsx
+ * import { useSharedLoading } from 'shared-loading-indicator'
+ *
+ * export const LoadingIndicator => () => {
+ * 	const isLoading = useSharedLoading()
+ *
+ * 	if (!isLoading) {
+ * 		return null
+ * 	}
+ *
+ * 	return (
+ * 		<div>
+ * 			App is loading something
+ * 		</div>
+ * 	)
+ * }
+ * ```
+ */
 export const useSharedLoading = (
 	options: {
 		startDelay?: number

@@ -1,5 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
+/**
+ * Styled visual indicator of loading.
+ */
 export const ProgressLoadingIndicator: FunctionComponent = () => {
 	return (
 		<>

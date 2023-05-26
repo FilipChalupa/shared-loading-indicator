@@ -98,7 +98,7 @@ Place `<Loading>` inside `<SharedLoadingIndicatorContextProvider>` to signalize 
 import { SharedLoadingIndicatorContextProvider, Loading } from 'shared-loading-indicator'
 
 export const App => () => {
-	const somethingIsLoading = true
+	const somethingIsLoading = true // Hook this to a state
 
 	return (
 		<SharedLoadingIndicatorContextProvider>
@@ -124,7 +124,9 @@ export const MyComponent => () => {
 			<div>
 				Is loading: {isLoading ? 'yes' : 'no'}
 			</div>
-			<button onClick={() => setIsLoading(!isLoading)}>
+			<button onClick={() => {
+				setIsLoading(!isLoading)
+			}}>
 		</div>
 	)
 }

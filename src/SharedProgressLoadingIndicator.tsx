@@ -2,6 +2,24 @@ import React, { FunctionComponent } from 'react'
 import { ProgressLoadingIndicator } from './ProgressLoadingIndicator'
 import { useSharedLoading } from './base'
 
+/**
+ * Place `SharedProgressLoadingIndicator` inside `SharedLoadingIndicatorContextProvider` to use prestyled loading indicator. See [demo](https://shared-loading-indicator.netlify.app) to change color or placement.
+ *
+ * ### Example
+ *
+ * ```jsx
+ * import { SharedLoadingIndicatorContextProvider, SharedProgressLoadingIndicator } from 'shared-loading-indicator'
+ *
+ * export const App => () => {
+ * 	return (
+ * 		<SharedLoadingIndicatorContextProvider>
+ * 			<SharedProgressLoadingIndicator/>
+ * 			My app
+ * 		</SharedLoadingIndicatorContextProvider>
+ * 	)
+ * }
+ * ```
+ */
 export const SharedProgressLoadingIndicator: FunctionComponent<{
 	placement?: 'top' | 'bottom'
 	startDelay?: number
