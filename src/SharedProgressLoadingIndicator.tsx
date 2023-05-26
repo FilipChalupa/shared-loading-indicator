@@ -1,7 +1,6 @@
-import * as React from 'react'
-import { FunctionComponent } from 'react'
-import { useSharedLoading } from './base'
+import React, { FunctionComponent } from 'react'
 import { ProgressLoadingIndicator } from './ProgressLoadingIndicator'
+import { useSharedLoading } from './base'
 
 export const SharedProgressLoadingIndicator: FunctionComponent<{
 	placement?: 'top' | 'bottom'

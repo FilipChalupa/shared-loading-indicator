@@ -171,11 +171,27 @@ Mirrors first argument to `useLocalMirror` under the hood.
 import { useMirrorLoading } from 'shared-loading-indicator'
 import { useQuery } from '@tanstack/react-query'
 
-const Mirror: FunctionComponent = () => {
+const Mirror = () => {
 	const query = useQuery([], getData)
 	useMirrorLoading(query.isLoading)
 
 	return <div>{query.data}</div>
+}
+```
+
+### Suspense by `<LoadingSuspense>`
+
+To capture loading state using Suspense wrap your content by `<LoadingSuspense>`.
+
+```jsx
+import { LoadingSuspense } from 'shared-loading-indicator'
+
+const LazyWithSuspense = () => {
+	return (
+		<LoadingSuspense>
+			<LazyComponent />
+		</LoadingSuspense>
+	)
 }
 ```
 

@@ -1,5 +1,6 @@
-export * from './base'
 export * from './Loading'
+export * from './LoadingSuspense'
 export * from './ProgressLoadingIndicator'
 export * from './SharedProgressLoadingIndicator'
+export * from './base'
 export * from './useMirrorLoading'
