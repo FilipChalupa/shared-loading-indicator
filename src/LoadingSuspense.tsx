@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren, Suspense } from 'react'
+import React, { ComponentProps, FunctionComponent, Suspense } from 'react'
 import { Loading } from './Loading'
 
 /**
@@ -18,8 +18,19 @@ import { Loading } from './Loading'
  * }
  * ```
  */
-export const LoadingSuspense: FunctionComponent<PropsWithChildren> = ({
-	children,
-}) => {
-	return <Suspense fallback={<Loading />}>{children}</Suspense>
+export const LoadingSuspense: FunctionComponent<
+	Pick<ComponentProps<typeof Suspense>, 'children' | 'fallback'>
+> = ({ children, fallback }) => {
+	return (
+		<Suspense
+			fallback={
+				<>
+					<Loading />
+					{fallback}
+				</>
+			}
+		>
+			{children}
+		</Suspense>
+	)
 }
