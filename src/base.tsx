@@ -128,7 +128,7 @@ export const useSharedLoading = (
 	options: {
 		startDelay?: number
 		minimalDuration?: number
-	} = {}
+	} = {},
 ) => {
 	const {
 		startDelay = defaultStartDelay,
@@ -152,9 +152,12 @@ export const useSharedLoading = (
 			const now = new Date()
 			const durationAlreadyPassed =
 				now.getTime() - loadingStart.current.getTime() - startDelay
-			const timer = setTimeout(() => {
-				setIsThrottledLoading(false)
-			}, Math.max(0, minimalDuration - durationAlreadyPassed))
+			const timer = setTimeout(
+				() => {
+					setIsThrottledLoading(false)
+				},
+				Math.max(0, minimalDuration - durationAlreadyPassed),
+			)
 			return () => {
 				clearTimeout(timer)
 			}
