@@ -1,7 +1,9 @@
-import * as React from 'react'
+'use client'
+
 import {
 	createContext,
-	FunctionComponent,
+	type FunctionComponent,
+	type ReactNode,
 	useCallback,
 	useContext,
 	useEffect,
@@ -42,7 +44,7 @@ const Context = createContext({
  * ```
  */
 export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
-	children?: React.ReactNode
+	children?: ReactNode
 }> = ({ children }) => {
 	const [count, setCount] = useState(0)
 	const increment = useCallback(() => {

@@ -4,6 +4,7 @@ import typescript from '@rollup/plugin-typescript'
 import path from 'path'
 import del from 'rollup-plugin-delete'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import preserveDirectives from 'rollup-plugin-preserve-directives'
 import packageJson from './package.json' assert { type: 'json' }
 
 const outputDirectory = path.parse(packageJson.main).dir
@@ -23,5 +24,6 @@ export default {
 		resolve(),
 		commonjs(),
 		typescript(),
+		preserveDirectives(),
 	],
 }

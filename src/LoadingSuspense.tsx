@@ -1,4 +1,4 @@
-import React, { ComponentProps, FunctionComponent, Suspense } from 'react'
+import { ComponentProps, FunctionComponent, Suspense } from 'react'
 import { Loading } from './Loading'
 
 /**
