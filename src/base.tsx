@@ -3,7 +3,7 @@
 import {
 	createContext,
 	type FunctionComponent,
-	type ReactNode,
+	PropsWithChildren,
 	useCallback,
 	useContext,
 	useEffect,
@@ -43,9 +43,9 @@ const Context = createContext({
  * }
  * ```
  */
-export const SharedLoadingIndicatorContextProvider: FunctionComponent<{
-	children?: ReactNode
-}> = ({ children }) => {
+export const SharedLoadingIndicatorContextProvider: FunctionComponent<
+	PropsWithChildren
+> = ({ children }) => {
 	const [count, setCount] = useState(0)
 	const increment = useCallback(() => {
 		setCount((count) => count + 1)
