@@ -197,6 +197,10 @@ const LazyWithSuspense = () => {
 }
 ```
 
+## React Native
+
+All components and hooks work in React Native as well, except for UI components [`<SharedProgressLoadingIndicator>`](./src/SharedProgressLoadingIndicator.tsx) and [`<ProgressLoadingIndicator>`](./src/ProgressLoadingIndicator.tsx), which are web only. They may be reimplemented for React Native too. See the source code to get inspired how.
+
 ## Tips
 
 - [Page navigation in Next.js](tips/nextjs.md)
